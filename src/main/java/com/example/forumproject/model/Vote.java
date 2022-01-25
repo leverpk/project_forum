@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Data
@@ -12,8 +13,10 @@ public class Vote {
 
     @Id
     private Long id;
-    private Long postId;
-    private Long userId;
+    @ManyToOne(targetEntity = Post.class) // Many Vote for One Post
+    private Post post;
+    @ManyToOne(targetEntity = User.class)
+    private User user;
     private Integer stars;
     private LocalDateTime creationDate;
 

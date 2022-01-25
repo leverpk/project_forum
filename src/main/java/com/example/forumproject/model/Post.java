@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Data
@@ -12,8 +13,8 @@ public class Post {
 
     @Id
     private Long id;
-    private Long threadId;
-    private Long userId;
+    @ManyToOne(targetEntity = User.class)
+    private User user;
     private String content;
     private LocalDateTime created;
 
