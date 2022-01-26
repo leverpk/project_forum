@@ -1,15 +1,15 @@
 package com.example.forumproject.service;
 
-import org.springframework.data.domain.Page;
+import com.example.forumproject.dto.ThreadDto;
+import com.example.forumproject.model.Thread;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ThreadService {
 
-    Thread addThread(Thread newThread);
-    List<Thread> findAll();
-    // TODO: dodawanie wątku (service czy controller?)
-    // TODO: jakie metody do threadService
+    // Adding methods
+
+    Thread addThread(ThreadDto newThread);
+    List<Thread> findAllThreads();
 
 }

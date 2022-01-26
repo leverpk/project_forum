@@ -1,0 +1,4 @@
+TODO: zapytać o klasę DTO
+TODO: utworzyć kategorie
+TODO: mappingi w controlerze dla threada
+TODO: utworzyć widoki
