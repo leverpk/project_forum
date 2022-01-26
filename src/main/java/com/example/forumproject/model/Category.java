@@ -2,9 +2,7 @@ package com.example.forumproject.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 @Builder
@@ -17,6 +15,7 @@ import java.util.List;
 public class Category {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
     @OneToMany
     private List<Thread> threadList;

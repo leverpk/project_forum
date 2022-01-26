@@ -5,6 +5,8 @@ import com.example.forumproject.model.Category;
 import com.example.forumproject.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class JpaCategoryService implements CategoryService {
 
@@ -35,6 +37,11 @@ public class JpaCategoryService implements CategoryService {
     public void updateCategoryTitle(Long id, String title) {
 
 
+    }
+
+    @Override
+    public List<Category> findAll() {
+        return categoryRepository.findAll();
     }
 
 

@@ -12,5 +12,6 @@ public interface CategoryService {
     Category addCategory(CategoryDto newCategory);
     void removeCategoryById(Long id);
     void updateCategoryTitle(Long id, String title);
+    List<Category> findAll();
   //  List<Thread> findAllThreads();
 }
