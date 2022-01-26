@@ -10,6 +10,6 @@ public class ThreadDto {
     String title;
     String description;
 
-    // TODO: zapytać o klasę DTO
+
 
 }

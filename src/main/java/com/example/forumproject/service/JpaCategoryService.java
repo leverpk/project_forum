@@ -6,7 +6,7 @@ import com.example.forumproject.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class JpaCategoryService implements CategoryService{
+public class JpaCategoryService implements CategoryService {
 
 
     private final CategoryRepository categoryRepository;
@@ -17,10 +17,9 @@ public class JpaCategoryService implements CategoryService{
 
     @Override
     public Category addCategory(CategoryDto newCategory) {
-        final Category category= Category.builder()
+        final Category category = Category.builder()
                 .title(newCategory.getTitle())
                 .description(newCategory.getDescription())
-                .date(newCategory.getDate())
                 .build();
         return categoryRepository.save(category);
     }
@@ -34,7 +33,6 @@ public class JpaCategoryService implements CategoryService{
 
     @Override
     public void updateCategoryTitle(Long id, String title) {
-
 
 
     }

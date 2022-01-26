@@ -10,5 +10,4 @@ public class CategoryDto {
 
     String title;
     String description;
-    LocalDateTime date;
 }

@@ -22,6 +22,4 @@ public class Category {
     private List<Thread> threadList;
     private String title;
     private String description;
-    private LocalDateTime date;
-
 }
