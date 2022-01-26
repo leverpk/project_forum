@@ -1,5 +1,7 @@
 TODO: zapytać o klasę DTO
-TODO: utworzyć kategorie
+TODO: utworzyć kategorie główne i zagnieżdżone
 TODO: mappingi w controlerze dla threada
 TODO: utworzyć widoki
 TODO: regulamin w categories
+
+Dto nie dla vote
