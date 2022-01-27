@@ -24,8 +24,11 @@
         <td th:text="${category.getTitle()}">
             Tytuł
         </td>
+        <div>
+
+            <a th:href="${category.getId()}">category.getTitle()</a>
+        </div>
         <td th:text="${category.getDescription()}">
-            Opis kategorii
         </td>
     </tr>
     </tbody>

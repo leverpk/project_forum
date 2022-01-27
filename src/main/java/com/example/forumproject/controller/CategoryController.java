@@ -15,7 +15,7 @@ public class CategoryController {
 
     @GetMapping("/category/add")
     public String categoryAddForm(){
-        return "/category/thread-add-form";
+        return "/category/category-add-form";
     }
 
     @GetMapping("/category/list")
