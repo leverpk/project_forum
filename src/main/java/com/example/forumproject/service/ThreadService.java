@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface ThreadService {
 
-    // Adding methods
-
     Thread addThread(ThreadDto newThread);
     List<Thread> findAllThreads();
 

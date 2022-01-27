@@ -12,6 +12,6 @@ public interface ThreadRepository extends JpaRepository<Thread, Long> {
 
     List<Thread> findThreadsByUser(String user);
 
-    // TODO: zaimplementować repozytorium
+
 
 }
