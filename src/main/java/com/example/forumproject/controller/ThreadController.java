@@ -25,7 +25,7 @@ public class ThreadController {
     @PostMapping("/thread/add")
     public String threadAdd(@ModelAttribute ThreadDto threadDto, Model model){
         model.addAttribute("thread", threadService.addThread(threadDto));
-        return "/thread/list";
+        return "redirect:/thread/list";
     }
 
     @GetMapping("/thread/list")

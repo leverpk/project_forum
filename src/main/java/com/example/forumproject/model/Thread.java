@@ -17,6 +17,7 @@ import java.util.List;
 public class Thread {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(targetEntity = User.class)
     private User user;
