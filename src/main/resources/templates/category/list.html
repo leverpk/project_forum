@@ -21,22 +21,15 @@
     <tbody>
     <!--/*@thymesVar id="book" type="pl.sda.springproject.model.Book"*/-->
     <tr th:each="category:${categories}">
-        <td th:text="${category.getTitle()}">
+        <td th:text="${category.getTitle()}">   //
             Tytuł
         </td>
-        <div>
-
-            <a th:href="${category.getId()}">category.getTitle()</a>
-        </div>
         <td th:text="${category.getDescription()}">
         </td>
     </tr>
     </tbody>
 </table>
 <ul>
-    <li>
-        <a href="/">Home</a>
-    </li>
     <li>
         <a href="/category/add">Dodaj kategorię</a>
     </li>
