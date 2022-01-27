@@ -21,6 +21,7 @@
     <tbody>
     <!--/*@thymesVar id="book" type="pl.sda.springproject.model.Book"*/-->
     <tr th:each="category:${categories}">
+
         <td th:text="${category.getTitle()}">   //
             Tytuł
         </td>

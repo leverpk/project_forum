@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>
+            Opis
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="post:${posts}">
+        <td th:text="${post.getContent()}">
+            Opis
+        </td>
+    </tr>
+    </tbody>
+</table>
+<ul>
+    <li>
+        <a href="/">Home</a>
+    </li>
+    <li>
+        <a href="/post/add">Dodaj nowy post</a>
+    </li>
+</ul>
+</body>
+</html>

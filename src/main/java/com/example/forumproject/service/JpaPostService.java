@@ -18,11 +18,14 @@ public class JpaPostService implements PostService{
 
     @Override
     public Post addPost(PostDto postDto) {
-        return null;
+        Post post = Post.builder()
+                .content(postDto.getContent())
+                .build();
+        return postRepository.save(post);
     }
 
     @Override
     public List<Post> findAllPosts() {
-        return null;
+        return postRepository.findAll();
     }
 }
