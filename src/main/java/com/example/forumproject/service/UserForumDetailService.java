@@ -1,23 +1,23 @@
 package com.example.forumproject.service;
 
-import com.example.forumproject.repository.UserAppRepository;
+import com.example.forumproject.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserAppService implements UserDetailsService {
+public class UserForumDetailService implements UserDetailsService {
 
-    private final UserAppRepository users;
+    private final UserRepository userRepository;
 
-    public UserAppService(UserAppRepository users) {
-        this.users = users;
+    public UserForumDetailService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
-
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return users.findByUsername(username).orElse(null);
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Brak takiego użytkownika!"));
     }
 }

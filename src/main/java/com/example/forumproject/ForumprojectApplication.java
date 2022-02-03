@@ -1,17 +1,22 @@
 package com.example.forumproject;
 
 import com.example.forumproject.model.Category;
+import com.example.forumproject.model.User;
 import com.example.forumproject.repository.CategoryRepository;
+import com.example.forumproject.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class ForumprojectApplication implements CommandLineRunner {
-    private final CategoryRepository categoryRepository;
 
-    public ForumprojectApplication(CategoryRepository categoryRepository) {
+    private final CategoryRepository categoryRepository;
+    private final UserRepository userRepository;
+
+    public ForumprojectApplication(CategoryRepository categoryRepository, UserRepository userRepository) {
         this.categoryRepository = categoryRepository;
+        this.userRepository = userRepository;
     }
 
     public static void main(String[] args) {
@@ -24,10 +29,23 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .title("Kocham Springa")
                 .description("Wszystko o Springu")
                 .build());
-
         categoryRepository.save(Category.builder()
                 .title("Kocham Javę")
                 .description("Wszystko o Javie")
+                .build());
+        final User user1 = userRepository.save(User.builder()
+                .email("admin@sda.pl")
+                .username("admin")
+                .password("1234")
+                .role("ROLE_ADMIN")
+                .enabled(true)
+                .build());
+        final User user2 = userRepository.save(User.builder()
+                .email("user@sda.pl")
+                .username("user")
+                .password("1234")
+                .role("ROLE_USER")
+                .enabled(true)
                 .build());
     }
 }
