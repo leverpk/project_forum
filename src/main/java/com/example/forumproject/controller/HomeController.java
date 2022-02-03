@@ -16,9 +16,8 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String home(Model model) {
-        model.addAttribute("categories", categoryService.findAll());
-        return "category/list";
+    public String home(){
+        return "index";
     }
 
 }

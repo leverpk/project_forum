@@ -15,14 +15,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Strona główna <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="/category/list">Kategorie</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
+                    Języki programowania
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Action</a>
@@ -39,6 +39,21 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
+        <div class="mr-2">
+<span class="navbar-text my-2">
+    Użytkownik:
+    <strong
+            th:text="${#strings.equals(#authentication.getName(), 'anonymousUser') ? 'niezalogowany' : #authentication.getName() }">
+    </strong>
+</span>
+        </div>
+        <div class="ml-3" th:if="${!#strings.equals(#authentication.getName(), 'anonymousUser')}">
+            <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/logout}">Wyloguj</a>
+        </div>
+        <div th:if="${#strings.equals(#authentication.getName(), 'anonymousUser')}">
+            <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/login}">Zaloguj</a>
+        </div>
+    </div>
     </div>
 </nav>
 </body>
