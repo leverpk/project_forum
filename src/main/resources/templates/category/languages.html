@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="main::head">
+    <meta charset="UTF-8">
+    <title>Lista kategorii</title>
+</head>
+<body>
+<nav th:insert="main::navigation">
+</nav>
+<table>
+    <thead>
+    <tr>
+        <th>
+            Java
+        </th>
+        <th>
+            Python
+        </th>
+        <th>
+            C#
+        </th>
+        <th>
+            Javascript
+        </th>
+    </tr>
+    </thead>
+</table>
+<ul>
+    <li>
+        <a href="/category/add">Dodaj kategorię</a>
+    </li>
+</ul>
+</body>
+</html>

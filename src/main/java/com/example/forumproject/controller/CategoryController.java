@@ -18,10 +18,19 @@ public class CategoryController {
         return "/category/category-add-form";
     }
 
-    @GetMapping("/category/list")
-    public String categoryList(Model model){
+    @GetMapping("/category/work")
+    public String workList(Model model){
         model.addAttribute("categories", categoryService.findAll());
-        return "/category/list";
+        return "/category/work";
     }
-    // TODO: zrobić mappingi
+
+    @GetMapping("/category/languages")
+    public String languagesList(){
+        return "/category/languages";
+    }
+
+    @GetMapping("/category/learning")
+    public String learningList(){
+        return "/category/learning";
+    }
 }

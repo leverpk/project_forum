@@ -26,11 +26,15 @@ public class ForumprojectApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         categoryRepository.save(Category.builder()
-                .title("Kocham Springa")
-                .description("Wszystko o Springu")
+                .title("Pytania rekrutacyjne")
+                .description("Baza pytań rekrutacyjnych")
                 .build());
         categoryRepository.save(Category.builder()
-                .title("Kocham Javę")
+                .title("Ogłoszenia dla Juniorów")
+                .description("Ogłoszenia o pracę")
+                .build());
+        categoryRepository.save(Category.builder()
+                .title("Java")
                 .description("Wszystko o Javie")
                 .build());
         final User user1 = userRepository.save(User.builder()

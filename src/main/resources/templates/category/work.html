@@ -12,16 +12,10 @@
 <table>
     <thead>
     <tr>
-        <th>
-            Nazwa kategorii
-        </th>
-        <th>
-            Opis kategorii
-        </th>
     </tr>
     </thead>
     <tbody>
-    <!--/*@thymesVar id="book" type="pl.sda.springproject.model.Book"*/-->
+
     <tr th:each="category:${categories}">
 
         <td th:text="${category.getTitle()}">   //
