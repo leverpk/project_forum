@@ -13,5 +13,6 @@ public interface CategoryService {
     void removeCategoryById(Long id);
     void updateCategoryTitle(Long id, String title);
     List<Category> findAll();
+    List<Category> findCategoryByParentId(Long id);
   //  List<Thread> findAllThreads();
 }

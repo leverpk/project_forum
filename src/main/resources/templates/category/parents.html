@@ -12,23 +12,11 @@
 <table>
     <thead>
     <tr>
-        <th>
-            Java
-        </th>
-        <th>
-            Python
-        </th>
-        <th>
-            C#
-        </th>
-        <th>
-            Javascript
-        </th>
     </tr>
     </thead>
     <tbody>
 
-    <tr th:each="category:${categories}">
+    <tr th:each="category:${parentCategories}">
 
         <td th:text="${category.getTitle()}">   //
             Tytuł

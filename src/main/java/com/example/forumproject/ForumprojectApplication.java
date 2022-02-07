@@ -25,18 +25,21 @@ public class ForumprojectApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        Category itWork = categoryRepository.save(Category.builder()
+                .title("Praca w IT")
+                .build());
         categoryRepository.save(Category.builder()
-                .title("Pytania rekrutacyjne")
+                .title("Pytania rekrutacyjne").parentCategoryId(itWork.getId())
                 .description("Baza pytań rekrutacyjnych")
                 .build());
-        categoryRepository.save(Category.builder()
-                .title("Ogłoszenia dla Juniorów")
-                .description("Ogłoszenia o pracę")
-                .build());
-        categoryRepository.save(Category.builder()
-                .title("Java")
-                .description("Wszystko o Javie")
-                .build());
+//        categoryRepository.save(Category.builder()
+//                .title("Ogłoszenia dla Juniorów")
+//                .description("Ogłoszenia o pracę")
+//                .build());
+//        categoryRepository.save(Category.builder()
+//                .title("Java")
+//                .description("Wszystko o Javie")
+//                .build());
         final User user1 = userRepository.save(User.builder()
                 .email("admin@sda.pl")
                 .username("admin")

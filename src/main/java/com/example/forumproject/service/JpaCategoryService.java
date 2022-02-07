@@ -28,15 +28,11 @@ public class JpaCategoryService implements CategoryService {
 
     @Override
     public void removeCategoryById(Long id) {
-
         categoryRepository.deleteById(id);
-
     }
 
     @Override
     public void updateCategoryTitle(Long id, String title) {
-
-
     }
 
     @Override
@@ -44,5 +40,12 @@ public class JpaCategoryService implements CategoryService {
         return categoryRepository.findAll();
     }
 
-
+    @Override
+    public List<Category> findCategoryByParentId(Long id) {
+        if (id == null) {
+            return categoryRepository.findByParentCategoryIdIsNull();
+        } else {
+            return null;
+        }
+    }
 }

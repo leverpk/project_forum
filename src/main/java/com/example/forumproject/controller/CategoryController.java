@@ -18,6 +18,12 @@ public class CategoryController {
         return "/category/category-add-form";
     }
 
+    @GetMapping("/category/parents")
+    public String getParentCategories(Model model){
+        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
+        return "/category/parents";
+    }
+
     @GetMapping("/category/work")
     public String workList(Model model){
         model.addAttribute("categories", categoryService.findAll());
@@ -25,7 +31,8 @@ public class CategoryController {
     }
 
     @GetMapping("/category/languages")
-    public String languagesList(){
+    public String languagesList(Model model){
+        model.addAttribute("categories", categoryService.findAll());
         return "/category/languages";
     }
 

@@ -16,6 +16,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
+    private Long parentCategoryId;
     @OneToMany
     private List<Thread> threadList;
     private String title;
