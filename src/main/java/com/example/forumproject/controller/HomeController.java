@@ -16,7 +16,8 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String home(){
+    public String home(Model model){
+        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
         return "index";
     }
 

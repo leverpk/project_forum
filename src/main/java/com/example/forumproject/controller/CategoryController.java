@@ -32,24 +32,6 @@ public class CategoryController {
     public String getSubcategories(Model model, Long id) {
         categoryService.findCategoryByParentId(id);
         //TODO reszta
-        return "/{id}";
-    }
-
-    @GetMapping("/category/work")
-    public String workList(Model model) {
-        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
-        return "/category/work";
-    }
-
-    @GetMapping("/category/languages")
-    public String languagesList(Model model) {
-        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
-        return "/category/languages";
-    }
-
-    @GetMapping("/category/learning")
-    public String learningList(Model model) {
-        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
-        return "/category/learning";
+        return "/category/subcategories";
     }
 }

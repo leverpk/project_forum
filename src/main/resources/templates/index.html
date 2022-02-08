@@ -6,7 +6,7 @@
     <title>Strona startowa</title>
 </head>
 <body>
-<nav th:insert="main::navigation"></nav>
+<nav th:replace="main::navigation(parentCategories=${parentCategories})"></nav>
 Witaj na stronie poświęconej programowaniu.
 Podpowiemy ci od czego zacząć, jak się szybko nauczyć się programować, dołączysz do grupy premium CodeFunk.
 </body>
