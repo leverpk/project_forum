@@ -34,6 +34,9 @@ public class ForumprojectApplication implements CommandLineRunner {
         Category other = categoryRepository.save(Category.builder()
                 .title("Nauka i inne")
                 .build());
+        Category afterWork = categoryRepository.save(Category.builder()
+                .title("Work life balance")
+                .build());
         categoryRepository.save(Category.builder()
                 .title("Pytania rekrutacyjne").parentCategoryId(itWork.getId())
                 .description("Baza pytań rekrutacyjnych")

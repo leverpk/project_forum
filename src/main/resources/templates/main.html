@@ -12,32 +12,10 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-<!--    <div th:fragment="formField (field, value, size)">-->
-<!--        <div>-->
-<!--            <label th:for="${#strings.toLowerCase(field)}"> <span-->
-<!--                    th:text="${field}">Field</span>-->
-<!--            </label>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <input type="text" th:id="${#strings.toLowerCase(field)}"-->
-<!--                   th:name="${#strings.toLowerCase(field)}" th:value="${value}"-->
-<!--                   th:size="${size}">-->
-<!--        </div>-->
-<!--    </div>-->
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Strona główna <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/category/work"></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/category/languages"></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/category/learning"></a>
+            <li th:each="category:${parentCategories}" class="nav-item active">
+                <a class="nav-link" th:href="@{'/category/' + ${category.getId()}}" th:text="${category.getTitle()}"><span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

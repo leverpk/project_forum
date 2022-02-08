@@ -4,8 +4,11 @@ import com.example.forumproject.service.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/category")
 public class CategoryController {
     private final CategoryService categoryService;
 
@@ -13,31 +16,38 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/category/add")
+    @GetMapping("/add")
     public String categoryAddForm(){
         return "/category/category-add-form";
     }
 
-    @GetMapping("/category/parents")
+    @GetMapping("/parents")
     public String getParentCategories(Model model){
         model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
         return "/category/parents";
     }
 
-    @GetMapping("/category/work")
-    public String workList(Model model){
-        model.addAttribute("categories", categoryService.findAll());
-        return "/category/work";
+    @GetMapping("/{id}")
+    public String getSubcategories(Model model, Long id) {
+        categoryService.findCategoryByParentId(id);
+        //TODO reszta
+        return null;
     }
 
-    @GetMapping("/category/languages")
-    public String languagesList(Model model){
-        model.addAttribute("categories", categoryService.findAll());
-        return "/category/languages";
-    }
-
-    @GetMapping("/category/learning")
-    public String learningList(){
-        return "/category/learning";
-    }
+//    @GetMapping("/category/work")
+//    public String workList(Model model){
+//        model.addAttribute("categories", categoryService.findAll());
+//        return "/category/work";
+//    }
+//
+//    @GetMapping("/category/languages")
+//    public String languagesList(Model model){
+//        model.addAttribute("categories", categoryService.findAll());
+//        return "/category/languages";
+//    }
+//
+//    @GetMapping("/category/learning")
+//    public String learningList(){
+//        return "/category/learning";
+//    }
 }
