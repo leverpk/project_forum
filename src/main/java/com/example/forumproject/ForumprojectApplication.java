@@ -41,6 +41,18 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .title("Pytania rekrutacyjne").parentCategoryId(itWork.getId())
                 .description("Baza pytań rekrutacyjnych")
                 .build());
+        categoryRepository.save(Category.builder()
+                .title("Java").parentCategoryId(languages.getId())
+                .description("języki i technologie")
+                .build());
+        categoryRepository.save(Category.builder()
+                .title("Szkoły").parentCategoryId(other.getId())
+                .description("polecane szkoły programowania")
+                .build());
+        categoryRepository.save(Category.builder()
+                .title("Relaks z grami").parentCategoryId(afterWork.getId())
+                .description("polecane gry")
+                .build());
 //        categoryRepository.save(Category.builder()
 //                .title("Ogłoszenia dla Juniorów")
 //                .description("Ogłoszenia o pracę")
