@@ -17,12 +17,13 @@ public class CategoryController {
     }
 
     @GetMapping("/add")
-    public String categoryAddForm(){
+    public String categoryAddForm(Model model) {
+        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
         return "/category/category-add-form";
     }
 
     @GetMapping("/parents")
-    public String getParentCategories(Model model){
+    public String getParentCategories(Model model) {
         model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
         return "/category/parents";
     }
@@ -31,23 +32,24 @@ public class CategoryController {
     public String getSubcategories(Model model, Long id) {
         categoryService.findCategoryByParentId(id);
         //TODO reszta
-        return null;
+        return "/{id}";
     }
 
-//    @GetMapping("/category/work")
-//    public String workList(Model model){
-//        model.addAttribute("categories", categoryService.findAll());
-//        return "/category/work";
-//    }
-//
-//    @GetMapping("/category/languages")
-//    public String languagesList(Model model){
-//        model.addAttribute("categories", categoryService.findAll());
-//        return "/category/languages";
-//    }
-//
-//    @GetMapping("/category/learning")
-//    public String learningList(){
-//        return "/category/learning";
-//    }
+    @GetMapping("/category/work")
+    public String workList(Model model) {
+        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
+        return "/category/work";
+    }
+
+    @GetMapping("/category/languages")
+    public String languagesList(Model model) {
+        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
+        return "/category/languages";
+    }
+
+    @GetMapping("/category/learning")
+    public String learningList(Model model) {
+        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
+        return "/category/learning";
+    }
 }
