@@ -9,10 +9,9 @@
 <nav th:replace="main::navigation(parentCategories=${parentCategories})"></nav>
 <tbody>
 
-<tr th:each="category:${parentCategories}">
+<tr th:each="category:${childCategories}">
 
     <td th:text="${category.getTitle()}">
-        Tytuł
     </td>
 </tr>
 </tbody>
