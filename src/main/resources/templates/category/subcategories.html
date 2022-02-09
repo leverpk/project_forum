@@ -11,8 +11,9 @@
 
 <tr th:each="category:${childCategories}">
 
-    <a href="/thread/id"><td th:text="${category.getTitle()}"></a>
-    </td>
+    <a href="/thread/id">
+        <td th:text="${category.getTitle()}">
+    </td></a>
 </tr>
 </tbody>
 </body>
