@@ -9,6 +9,7 @@ public interface ThreadService {
 
     Thread addThread(ThreadDto newThread);
     List<Thread> findAllThreads();
+    List<Thread> findAllThreadsInSubcategory(Long id);
 
 
 }

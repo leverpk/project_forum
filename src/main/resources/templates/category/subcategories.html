@@ -13,9 +13,7 @@
 
     <div class="subcategories m-5">
         <h3>
-    <a href="/thread/id">
-        <td th:text="${category.getTitle()}">
-    </td>
+    <a th:href="@{'/category/' + ${category.getId()} + '/thread/'}" th:text="${category.getTitle()}">
     </a>
         </h3>
     </div>

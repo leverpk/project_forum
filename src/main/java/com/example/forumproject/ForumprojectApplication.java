@@ -10,6 +10,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.List;
+
 @SpringBootApplication
 public class ForumprojectApplication implements CommandLineRunner {
 
@@ -42,11 +44,6 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .title("Work life balance")
                 .build());
         categoryRepository.save(Category.builder()
-                .title("Pytania rekrutacyjne")
-                .parentCategoryId(itWork.getId())
-                .description("Baza pytań rekrutacyjnych")
-                .build());
-        categoryRepository.save(Category.builder()
                 .title("Ogłoszenia dla Juniorów")
                 .parentCategoryId(itWork.getId())
                 .description("Ogłoszenia o pracę")
@@ -65,6 +62,15 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .title("Relaks z grami")
                 .parentCategoryId(afterWork.getId())
                 .description("polecane gry")
+                .build());
+        Thread javaQuestions = threadRepository.save(Thread.builder()
+                .title("Pytania z Javy")
+                .build());
+        categoryRepository.save(Category.builder()
+                .title("Pytania rekrutacyjne")
+                .parentCategoryId(itWork.getId())
+                .description("Baza pytań rekrutacyjnych")
+                .threadList(List.of(javaQuestions))
                 .build());
         final User user1 = userRepository.save(User.builder()
                 .email("admin@sda.pl")

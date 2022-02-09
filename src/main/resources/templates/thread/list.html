@@ -2,37 +2,25 @@
 <html lang="en">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:insert="main::head">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<nav th:replace="main::navigation(parentCategories=${parentCategories})"></nav>
 <table>
     <thead>
     <tr>
-        <th>
-            Tytuł wątka
-        </th>
-        <th>
-            Opis
-        </th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="thread:${threads}">
-        <td th:text="${thread.getTitle()}">
-            Tytuł
-        </td>
-        <td th:text="${thread.getDescription()}">
-            Opis
+    <tr th:each="category:${threads}">
+        <td th:text="${category.getTitle()}">
         </td>
     </tr>
     </tbody>
 </table>
 <ul>
-    <li>
-        <a href="/">Home</a>
-    </li>
     <li>
         <a href="/thread/add">Dodaj nowy wątek</a>
     </li>
