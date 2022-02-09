@@ -23,9 +23,11 @@ public class JpaThreadService implements ThreadService{
                 .title(newThread.getTitle())
                 .description(newThread.getDescription())
                 .build();
-        Category byId = categoryRepository.getById(categoryId);
-
-        return threadRepository.save(thread);
+        Thread savedThread = threadRepository.save(thread);
+        Category category = categoryRepository.getById(categoryId);
+        category.getThreadList().add(savedThread);
+        categoryRepository.save(category);
+        return savedThread;
     }
 
     @Override
