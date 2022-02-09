@@ -18,11 +18,13 @@ public class JpaThreadService implements ThreadService{
     private final CategoryRepository categoryRepository;
 
     @Override
-    public Thread addThread(ThreadDto newThread) {
+    public Thread addThread(ThreadDto newThread, Long categoryId) {
         Thread thread = Thread.builder()
                 .title(newThread.getTitle())
                 .description(newThread.getDescription())
                 .build();
+        Category byId = categoryRepository.getById(categoryId);
+
         return threadRepository.save(thread);
     }
 

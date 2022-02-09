@@ -15,21 +15,24 @@ public class ThreadController {
     private final ThreadService threadService;
     private final CategoryService categoryService;
 
-    @GetMapping("/add")
-    public String threadAddForm(){
+    @GetMapping("/category/{id}/thread/add")
+    public String threadAddForm(Model model, @PathVariable Long id){
+        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
+        model.addAttribute("categoryId", id);
         return "/thread/thread-add-form";
     }
 
-    @PostMapping("/add")
-    public String threadAdd(@ModelAttribute ThreadDto threadDto, Model model){
-        model.addAttribute("thread", threadService.addThread(threadDto));
-        return "redirect:/thread/list";
+    @PostMapping("/category/{id}/thread")
+    public String threadAdd(@ModelAttribute ThreadDto threadDto, @PathVariable Long id){
+        threadService.addThread(threadDto, id);
+        return "redirect:/category/" + id + "/thread";
     }
 
     @GetMapping("/category/{id}/thread")
     public String threadList(Model model, @PathVariable Long id) {
         model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
         model.addAttribute("threads", threadService.findAllThreadsInSubcategory(id));
+        model.addAttribute("categoryId", id);
         return "/thread/list";
     }
 }

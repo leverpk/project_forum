@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ThreadService {
 
-    Thread addThread(ThreadDto newThread);
+    Thread addThread(ThreadDto newThread, Long id);
     List<Thread> findAllThreads();
     List<Thread> findAllThreadsInSubcategory(Long id);
 
