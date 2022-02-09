@@ -15,8 +15,11 @@
     </thead>
     <tbody>
     <tr th:each="category:${threads}">
-        <td th:text="${category.getTitle()}">
-        </td>
+        <div class="threadlist m-5">
+
+            <h3><a th:href="@{'/category/' + ${category.getId()} + '/thread/'}" th:text="${category.getTitle()}"></a>
+<!--            lista threadów-->
+        </h3></div>
     </tr>
     </tbody>
 </table>
