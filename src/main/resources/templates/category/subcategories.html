@@ -7,6 +7,14 @@
 </head>
 <body>
 <nav th:replace="main::navigation(parentCategories=${parentCategories})"></nav>
+<tbody>
 
+<tr th:each="category:${parentCategories}">
+
+    <td th:text="${category.getTitle()}">
+        Tytuł
+    </td>
+</tr>
+</tbody>
 </body>
 </html>

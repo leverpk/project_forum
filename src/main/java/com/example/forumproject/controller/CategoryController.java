@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/category")
 public class CategoryController {
+
     private final CategoryService categoryService;
 
     public CategoryController(CategoryService categoryService) {
@@ -30,8 +31,7 @@ public class CategoryController {
 
     @GetMapping("/{id}")
     public String getSubcategories(Model model, Long id) {
-        categoryService.findCategoryByParentId(id);
-        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
+        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(id));
         return "/category/subcategories";
     }
 }

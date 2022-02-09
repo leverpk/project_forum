@@ -14,5 +14,5 @@ public interface CategoryService {
     void updateCategoryTitle(Long id, String title);
     List<Category> findAll();
     List<Category> findCategoryByParentId(Long id);
-  //  List<Thread> findAllThreads();
+
 }

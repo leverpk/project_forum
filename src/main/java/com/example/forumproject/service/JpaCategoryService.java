@@ -45,7 +45,7 @@ public class JpaCategoryService implements CategoryService {
         if (id == null) {
             return categoryRepository.findByParentCategoryIdIsNull();
         } else {
-            return null;
+            return categoryRepository.findByParentCategoryId(id);
         }
     }
 }

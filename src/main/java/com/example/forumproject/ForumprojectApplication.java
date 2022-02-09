@@ -38,23 +38,28 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .title("Work life balance")
                 .build());
         categoryRepository.save(Category.builder()
-                .title("Pytania rekrutacyjne").parentCategoryId(itWork.getId())
+                .title("Pytania rekrutacyjne")
+                .parentCategoryId(itWork.getId())
                 .description("Baza pytań rekrutacyjnych")
                 .build());
         categoryRepository.save(Category.builder()
-                .title("Ogłoszenia dla Juniorów").parentCategoryId(itWork.getId())
+                .title("Ogłoszenia dla Juniorów")
+                .parentCategoryId(itWork.getId())
                 .description("Ogłoszenia o pracę")
                 .build());
         categoryRepository.save(Category.builder()
-                .title("Java").parentCategoryId(languages.getId())
+                .title("Java")
+                .parentCategoryId(languages.getId())
                 .description("języki i technologie")
                 .build());
         categoryRepository.save(Category.builder()
-                .title("Szkoły").parentCategoryId(other.getId())
+                .title("Szkoły")
+                .parentCategoryId(other.getId())
                 .description("polecane szkoły programowania")
                 .build());
         categoryRepository.save(Category.builder()
-                .title("Relaks z grami").parentCategoryId(afterWork.getId())
+                .title("Relaks z grami")
+                .parentCategoryId(afterWork.getId())
                 .description("polecane gry")
                 .build());
         final User user1 = userRepository.save(User.builder()
