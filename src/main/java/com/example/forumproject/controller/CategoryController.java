@@ -31,7 +31,7 @@ public class CategoryController {
     @GetMapping("/{id}")
     public String getSubcategories(Model model, Long id) {
         categoryService.findCategoryByParentId(id);
-        //TODO reszta
+        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
         return "/category/subcategories";
     }
 }

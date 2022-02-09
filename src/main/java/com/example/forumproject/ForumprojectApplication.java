@@ -42,6 +42,10 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .description("Baza pytań rekrutacyjnych")
                 .build());
         categoryRepository.save(Category.builder()
+                .title("Ogłoszenia dla Juniorów").parentCategoryId(itWork.getId())
+                .description("Ogłoszenia o pracę")
+                .build());
+        categoryRepository.save(Category.builder()
                 .title("Java").parentCategoryId(languages.getId())
                 .description("języki i technologie")
                 .build());
@@ -53,14 +57,6 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .title("Relaks z grami").parentCategoryId(afterWork.getId())
                 .description("polecane gry")
                 .build());
-//        categoryRepository.save(Category.builder()
-//                .title("Ogłoszenia dla Juniorów")
-//                .description("Ogłoszenia o pracę")
-//                .build());
-//        categoryRepository.save(Category.builder()
-//                .title("Java")
-//                .description("Wszystko o Javie")
-//                .build());
         final User user1 = userRepository.save(User.builder()
                 .email("admin@sda.pl")
                 .username("admin")
