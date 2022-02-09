@@ -1,8 +1,10 @@
 package com.example.forumproject;
 
 import com.example.forumproject.model.Category;
+import com.example.forumproject.model.Thread;
 import com.example.forumproject.model.User;
 import com.example.forumproject.repository.CategoryRepository;
+import com.example.forumproject.repository.ThreadRepository;
 import com.example.forumproject.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,10 +15,12 @@ public class ForumprojectApplication implements CommandLineRunner {
 
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
+    private final ThreadRepository threadRepository;
 
-    public ForumprojectApplication(CategoryRepository categoryRepository, UserRepository userRepository) {
+    public ForumprojectApplication(CategoryRepository categoryRepository, UserRepository userRepository, ThreadRepository threadRepository) {
         this.categoryRepository = categoryRepository;
         this.userRepository = userRepository;
+        this.threadRepository = threadRepository;
     }
 
     public static void main(String[] args) {
