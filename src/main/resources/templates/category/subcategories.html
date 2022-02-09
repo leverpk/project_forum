@@ -11,9 +11,14 @@
 
 <tr th:each="category:${childCategories}">
 
+    <div class="subcategories m-5">
+        <h3>
     <a href="/thread/id">
         <td th:text="${category.getTitle()}">
-    </td></a>
+    </td>
+    </a>
+        </h3>
+    </div>
 </tr>
 </tbody>
 </body>
