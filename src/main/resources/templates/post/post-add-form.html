@@ -10,10 +10,9 @@
 <nav th:replace="main::navigation(parentCategories=${parentCategories})"></nav>
 
 
-<form th:action="@{'/category/' + ${categoryId} + '/thread/'}" method="post">
-    <input type="text" name="title" placeholder="Wpisz tytuł"><br>
-    <textarea name="description" placeholder="Wpisz zawartość..."></textarea><br>
-    <button type="submit">Dodaj wątek</button>
+<form th:action="@{'/category/' + ${categoryId} + '/thread/'+ ${threadId}+'/post'}" method="post">
+    <textarea name="content" placeholder="Wpisz zawartość..."></textarea><br>
+    <button type="submit">Dodaj post</button>
 </form>
 
 </body>

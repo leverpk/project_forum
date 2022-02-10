@@ -31,6 +31,7 @@ public class PostController {
     @PostMapping("/category/{id}/thread/{idThread}/post")
     public String postAdd(@ModelAttribute PostDto postDto, Model model, @PathVariable Long id, @PathVariable Long idThread) {
         postService.addPost(postDto, id, idThread);
+        model.addAttribute("threadId", idThread);
         return "redirect:/post/list";
     }
 
