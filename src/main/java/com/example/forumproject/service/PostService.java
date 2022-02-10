@@ -9,7 +9,8 @@ import java.util.List;
 
 public interface PostService {
 
-    Post addPost(PostDto postDto);
+    Post addPost(PostDto newPost, Long id,Long threadId);
     List<Post> findAllPosts();
+    List<Post> findAllPostsInThread(Long id);
 
 }

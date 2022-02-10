@@ -1,9 +1,11 @@
 package com.example.forumproject;
 
 import com.example.forumproject.model.Category;
+import com.example.forumproject.model.Post;
 import com.example.forumproject.model.Thread;
 import com.example.forumproject.model.User;
 import com.example.forumproject.repository.CategoryRepository;
+import com.example.forumproject.repository.PostRepository;
 import com.example.forumproject.repository.ThreadRepository;
 import com.example.forumproject.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -18,11 +20,13 @@ public class ForumprojectApplication implements CommandLineRunner {
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
     private final ThreadRepository threadRepository;
+    private final PostRepository postRepository;
 
-    public ForumprojectApplication(CategoryRepository categoryRepository, UserRepository userRepository, ThreadRepository threadRepository) {
+    public ForumprojectApplication(CategoryRepository categoryRepository, UserRepository userRepository, ThreadRepository threadRepository, PostRepository postRepository) {
         this.categoryRepository = categoryRepository;
         this.userRepository = userRepository;
         this.threadRepository = threadRepository;
+        this.postRepository = postRepository;
     }
 
     public static void main(String[] args) {
@@ -66,6 +70,10 @@ public class ForumprojectApplication implements CommandLineRunner {
         Thread javaQuestions = threadRepository.save(Thread.builder()
                 .title("Pytania z Javy")
                 .build());
+        postRepository.save(Post.builder()
+                .content("Byle co")
+                .build()
+        );
         categoryRepository.save(Category.builder()
                 .title("Pytania rekrutacyjne")
                 .parentCategoryId(itWork.getId())

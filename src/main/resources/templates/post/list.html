@@ -7,9 +7,15 @@
     <title>Title</title>
 </head>
 <body>
+<nav th:replace="main::navigation(parentCategories=${parentCategories})">
 <table>
     <thead>
     <tr>
+        <div class="postlist m-5">
+
+            <h3><a th:href="@{'/category/' + ${category.getId()} + '/thread/'+ ${thread.getId()} " th:text="${thread.getTitle()}"></a>
+                <!--            lista threadów-->
+            </h3></div>
         <th>
             Opis
         </th>
