@@ -15,5 +15,5 @@ public interface CategoryService {
     List<Category> findAll();
     List<Category> findCategoryByParentId(Long id);
 
-
+    Category getById(Long id);
 }

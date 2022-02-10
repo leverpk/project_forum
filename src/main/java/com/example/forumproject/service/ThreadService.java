@@ -12,4 +12,5 @@ public interface ThreadService {
     List<Thread> findAllThreadsInSubcategory(Long id);
 
 
+
 }

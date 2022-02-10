@@ -48,4 +48,10 @@ public class JpaCategoryService implements CategoryService {
             return categoryRepository.findByParentCategoryId(id);
         }
     }
+
+    @Override
+    public Category getById(Long id) {
+        return categoryRepository.getById(id);
+    }
+
 }

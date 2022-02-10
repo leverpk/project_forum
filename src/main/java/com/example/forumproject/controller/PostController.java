@@ -24,6 +24,7 @@ public class PostController {
     @GetMapping("/category/{id}/thread/{idThread}/post/add")
     public String postAddForm(Model model, @PathVariable Long id, @PathVariable Long idThread) {
         model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
+        model.addAttribute("threadId", idThread);
         model.addAttribute("categoryId", id);
         return "/post/post-add-form";
     }
@@ -32,7 +33,7 @@ public class PostController {
     public String postAdd(@ModelAttribute PostDto postDto, Model model, @PathVariable Long id, @PathVariable Long idThread) {
         postService.addPost(postDto, id, idThread);
         model.addAttribute("threadId", idThread);
-        return "redirect:/post/list";
+        return "redirect:/category/" + id + "/thread/" + idThread + "/post";
     }
 
     @GetMapping("/category/{id}/thread/{idThread}/post")

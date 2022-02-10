@@ -32,6 +32,7 @@ public class ThreadController {
     public String threadList(Model model, @PathVariable Long id) {
         model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
         model.addAttribute("threads", threadService.findAllThreadsInSubcategory(id));
+        model.addAttribute("category", categoryService.getById(id));
         model.addAttribute("categoryId", id);
         return "/thread/list";
     }

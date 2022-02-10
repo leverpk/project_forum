@@ -14,9 +14,13 @@
     </tr>
     </thead>
     <tbody>
+
+        <div class="threadlist m-5">
+            <h2 th:text="${category.getTitle()}"></h2>
+            </div>
+
     <tr th:each="thread:${threads}">
         <div class="threadlist m-5">
-
             <h3><a th:href="@{'/category/' + ${categoryId} + '/thread/' + ${thread.getId()} + '/post'}" th:text="${thread.getTitle()}"></a>
 <!--            lista threadów-->
         </h3></div>
@@ -24,9 +28,10 @@
     </tbody>
 </table>
 <ul>
-    <li>
-        <a th:href="@{'/category/' + ${categoryId} + '/thread/add'}">Dodaj nowy wątek</a>
-    </li>
+
+        <button type="submit">
+        <h4><a th:href="@{'/category/' + ${categoryId} + '/thread/add'}">Dodaj nowy wątek</a></h4></button>
+
 </ul>
 </body>
 </html>
