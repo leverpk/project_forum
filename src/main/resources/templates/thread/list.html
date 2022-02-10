@@ -14,10 +14,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="category:${threads}">
+    <tr th:each="thread:${threads}">
         <div class="threadlist m-5">
 
-            <h3><a th:href="@{'/category/' + ${category.getId()} + '/thread/'}" th:text="${category.getTitle()}"></a>
+            <h3><a th:href="@{'/category/' + ${categoryId} + '/thread/' + ${thread.getId()} + '/post'}" th:text="${thread.getTitle()}"></a>
 <!--            lista threadów-->
         </h3></div>
     </tr>

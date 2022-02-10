@@ -2,40 +2,31 @@
 <html lang="en">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:insert="main::head">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<nav th:replace="main::navigation(parentCategories=${parentCategories})">
-<table>
-    <thead>
-    <tr>
-        <div class="postlist m-5">
+<nav th:replace="main::navigation(parentCategories=${parentCategories})"></nav>
+    <table>
+        <thead>
+        <tr>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="post:${posts}">
+            <div class="postlist m-5">
 
-            <h3><a th:href="@{'/category/' + ${category.getId()} + '/thread/'+ ${thread.getId()} " th:text="${thread.getTitle()}"></a>
-                <!--            lista threadów-->
-            </h3></div>
-        <th>
-            Opis
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="post:${posts}">
-        <td th:text="${post.getContent()}">
-            Opis
-        </td>
-    </tr>
-    </tbody>
-</table>
-<ul>
-    <li>
-        <a href="/">Home</a>
-    </li>
-    <li>
-        <a href="/post/add">Dodaj nowy post</a>
-    </li>
-</ul>
+                <h3><a th:href="@{'/category/' + ${categoryId} + '/thread/' + ${threadId} + '/post' + ${post.getId()}}" th:text="${post.getContent()}"></a>
+
+                </h3></div>
+        </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a th:href="@{'/category/' + ${categoryId} + '/thread/' + ${threadId} + '/post/add'}">Dodaj nowy post</a>
+        </li>
+    </ul>
 </body>
 </html>

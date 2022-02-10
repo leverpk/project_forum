@@ -36,10 +36,11 @@ public class PostController {
 
     @GetMapping("/category/{id}/thread/{idThread}/post")
     public String postList(Model model, @PathVariable Long id, @PathVariable Long idThread) {
-        model.addAttribute("posts", postService.findAllPosts());
         model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
         model.addAttribute("threads", threadService.findAllThreadsInSubcategory(id));
         model.addAttribute("categoryId", id);
+        model.addAttribute("posts", postService.findAllPostsInThread(idThread));
+        model.addAttribute("threadId", idThread);
         return "/post/list";
     }
 
