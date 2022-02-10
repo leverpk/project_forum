@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="main::head">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<form action="/post/add" method="post">
-    <textarea name="content" placeholder="Napisz post..."></textarea><br>
-    <button type="submit">Dodaj post</button>
+<nav th:replace="main::navigation(parentCategories=${parentCategories})"></nav>
+
+
+<form th:action="@{'/category/' + ${categoryId} + '/thread/'}" method="post">
+    <input type="text" name="title" placeholder="Wpisz tytuł"><br>
+    <textarea name="description" placeholder="Wpisz zawartość..."></textarea><br>
+    <button type="submit">Dodaj wątek</button>
 </form>
+
 </body>
 </html>
