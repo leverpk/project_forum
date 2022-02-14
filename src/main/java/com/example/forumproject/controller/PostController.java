@@ -43,6 +43,7 @@ public class PostController {
         model.addAttribute("categoryId", id);
         model.addAttribute("posts", postService.findAllPostsInThread(idThread));
         model.addAttribute("threadId", idThread);
+        model.addAttribute("threadTitle", threadService.getById(idThread));
         return "/post/list";
     }
 

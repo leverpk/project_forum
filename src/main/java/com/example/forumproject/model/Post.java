@@ -21,6 +21,6 @@ public class Post {
     @ManyToOne(targetEntity = User.class)
     private User user;
     private String content;
-    private LocalDateTime created;
+    private String created;
 
 }

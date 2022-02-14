@@ -12,6 +12,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.security.Timestamp;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @SpringBootApplication
@@ -47,10 +52,50 @@ public class ForumprojectApplication implements CommandLineRunner {
         Category afterWork = categoryRepository.save(Category.builder()
                 .title("Work life balance")
                 .build());
+        Post postSopot = postRepository.save(Post.builder()
+                .content("Praca w Sopocie")
+                .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+                .build());
+        Post postGdansk = postRepository.save(Post.builder()
+                .content("Praca w Gdańsku")
+                .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+                .build());
+        Thread javaOffers = threadRepository.save(Thread.builder()
+                .title("Junior Java Developers")
+                .postList(List.of(postSopot, postGdansk))
+                .build());
+        Thread csharpOffers = threadRepository.save(Thread.builder()
+                .title("Junior C# Developers")
+                .build());
+        Thread cPlusOffers = threadRepository.save(Thread.builder()
+                .title("Junior C++ Developers")
+                .build());
+        Thread pythonOffers = threadRepository.save(Thread.builder()
+                .title("Junior Python Developers")
+                .build());
         categoryRepository.save(Category.builder()
                 .title("Ogłoszenia dla Juniorów")
                 .parentCategoryId(itWork.getId())
                 .description("Ogłoszenia o pracę")
+                .threadList(List.of(javaOffers, csharpOffers, cPlusOffers, pythonOffers))
+                .build());
+        Thread javaQuestions = threadRepository.save(Thread.builder()
+                .title("Pytania rekrutacyjne z Javy")
+                .build());
+        Thread csharpQuestions = threadRepository.save(Thread.builder()
+                .title("Pytania rekrutacyjne z C#")
+                .build());
+        Thread cPlusQuestions = threadRepository.save(Thread.builder()
+                .title("Pytania rekrutacyjne z C++")
+                .build());
+        Thread pythonQuestions = threadRepository.save(Thread.builder()
+                .title("Pytania rekrutacyjne z Pythona")
+                .build());
+        categoryRepository.save(Category.builder()
+                .title("Pytania rekrutacyjne")
+                .parentCategoryId(itWork.getId())
+                .description("Baza pytań rekrutacyjnych")
+                .threadList(List.of(javaQuestions, csharpQuestions, cPlusQuestions, pythonQuestions))
                 .build());
         categoryRepository.save(Category.builder()
                 .title("Java")
@@ -58,7 +103,22 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .description("języki i technologie")
                 .build());
         categoryRepository.save(Category.builder()
-                .title("Szkoły")
+                .title("C#")
+                .parentCategoryId(languages.getId())
+                .description("języki i technologie")
+                .build());
+        categoryRepository.save(Category.builder()
+                .title("C++")
+                .parentCategoryId(languages.getId())
+                .description("języki i technologie")
+                .build());
+        categoryRepository.save(Category.builder()
+                .title("Python")
+                .parentCategoryId(languages.getId())
+                .description("języki i technologie")
+                .build());
+        categoryRepository.save(Category.builder()
+                .title("Szkoły programowania")
                 .parentCategoryId(other.getId())
                 .description("polecane szkoły programowania")
                 .build());
@@ -66,19 +126,6 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .title("Relaks z grami")
                 .parentCategoryId(afterWork.getId())
                 .description("polecane gry")
-                .build());
-        Thread javaQuestions = threadRepository.save(Thread.builder()
-                .title("Pytania z Javy")
-                .build());
-        postRepository.save(Post.builder()
-                .content("Byle co")
-                .build()
-        );
-        categoryRepository.save(Category.builder()
-                .title("Pytania rekrutacyjne")
-                .parentCategoryId(itWork.getId())
-                .description("Baza pytań rekrutacyjnych")
-                .threadList(List.of(javaQuestions))
                 .build());
         final User user1 = userRepository.save(User.builder()
                 .email("admin@sda.pl")

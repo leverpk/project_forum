@@ -12,10 +12,18 @@
 <tr th:each="category:${childCategories}">
 
     <div class="subcategories m-5">
+        <div class="cointainer px-4">
+            <div class="row gx-5">
+                <div class="col">
+                    <div class="p-3 border bg-light">
         <h3>
     <a th:href="@{'/category/' + ${category.getId()} + '/thread/'}" th:text="${category.getTitle()}">
     </a>
         </h3>
+                    </div>
+                    </div>
+                </div>
+        </div>
     </div>
 </tr>
 </tbody>

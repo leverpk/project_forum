@@ -39,4 +39,9 @@ public class JpaThreadService implements ThreadService{
     public List<Thread> findAllThreadsInSubcategory(Long id) {
         return categoryRepository.findById(id).map(Category::getThreadList).orElseThrow();
     }
+
+    @Override
+    public Thread getById(Long id) {
+        return threadRepository.getById(id);
+    }
 }

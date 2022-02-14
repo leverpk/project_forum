@@ -14,12 +14,19 @@
         </tr>
         </thead>
         <tbody>
+
+        <div class="threadlist m-5">
+            <h2 th:text="${threadTitle.getTitle()}"></h2>
+        </div>
+
         <tr th:each="post:${posts}">
-            <div class="postlist m-5">
+            <div class="postlist m-3 border rounded" style="width:500px; height: 100px;">
 
-                <h3><a th:href="@{'/category/' + ${categoryId} + '/thread/' + ${threadId} + '/post' + ${post.getId()}}" th:text="${post.getContent()}"></a>
+                <h5><span th:text="${post.getContent()}"></span>
+                </h5>
 
-                </h3></div>
+            <span th:text="${post.getCreated()}"></span>
+            </div>
         </tr>
         </tbody>
     </table>
