@@ -13,5 +13,5 @@ public class PostDto {
     User user;
     @NotNull
     String content;
-    LocalDateTime created;
+    String created;
 }

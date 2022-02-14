@@ -1,2 +1,3 @@
-TODO: header dodaj watek
+TODO: implementacja usera w poscie
+TODO: wyszukiwarka
 

@@ -12,6 +12,7 @@
 
 <form th:action="@{'/category/' + ${categoryId} + '/thread/'+ ${threadId}+'/post'}" method="post">
     <textarea name="content" placeholder="Wpisz zawartość..."></textarea><br>
+    <input type="text" placeholder="Wpisz nick..."><br>
     <button type="submit">Dodaj post</button>
 </form>
 

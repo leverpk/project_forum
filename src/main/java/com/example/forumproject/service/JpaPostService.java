@@ -9,6 +9,8 @@ import com.example.forumproject.repository.PostRepository;
 import com.example.forumproject.repository.ThreadRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -28,6 +30,7 @@ public class JpaPostService implements PostService {
     public Post addPost(PostDto newPost, Long id, Long threadId) {
         Post post = Post.builder()
                 .content(newPost.getContent())
+                .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .build();
         Post savedPost = postRepository.save(post);
         Thread thread = threadRepository.getById(threadId);
@@ -36,6 +39,7 @@ public class JpaPostService implements PostService {
         postRepository.save(post);
         return savedPost;
     }
+
 
     @Override
     public List<Post> findAllPosts() {

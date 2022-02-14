@@ -20,12 +20,16 @@
         </div>
 
         <tr th:each="post:${posts}">
-            <div class="postlist m-3 border rounded" style="width:500px; height: 100px;">
 
-                <h5><span th:text="${post.getContent()}"></span>
-                </h5>
 
-            <span th:text="${post.getCreated()}"></span>
+            <div class="d-block p-3">
+                <div class="d-inline p-2">
+                    <span th:text="${post.getContent()}"></span>
+                </div>
+
+                <div class="d-inline p-2">
+                    <span th:text="${post.getCreated()}"></span>
+                </div>
             </div>
         </tr>
         </tbody>
