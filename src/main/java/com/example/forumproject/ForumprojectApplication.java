@@ -17,7 +17,9 @@ import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @SpringBootApplication
 public class ForumprojectApplication implements CommandLineRunner {
@@ -54,10 +56,12 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .build());
         Post postSopot = postRepository.save(Post.builder()
                 .content("Praca w Sopocie")
+                .username("PanNauczyciel")
                 .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .build());
         Post postGdansk = postRepository.save(Post.builder()
                 .content("Praca w Gdańsku")
+                .username("Piopio")
                 .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .build());
         Thread javaOffers = threadRepository.save(Thread.builder()

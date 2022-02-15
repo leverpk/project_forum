@@ -14,4 +14,5 @@ public class PostDto {
     @NotNull
     String content;
     String created;
+    String username;
 }

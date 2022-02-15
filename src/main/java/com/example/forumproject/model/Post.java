@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -22,5 +20,6 @@ public class Post {
     private User user;
     private String content;
     private String created;
+    private String username;
 
 }

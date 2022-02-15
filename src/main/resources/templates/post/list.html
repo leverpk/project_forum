@@ -15,7 +15,7 @@
         </thead>
         <tbody>
 
-        <div class="threadlist m-5">
+        <div class="threadlist m-4">
             <h2 th:text="${threadTitle.getTitle()}"></h2>
         </div>
 
@@ -23,12 +23,13 @@
 
 
             <div class="d-block p-3">
-                <div class="d-inline p-2">
+                <div class="d-inline-block p-2 border border-dark rounded" >
                     <span th:text="${post.getContent()}"></span>
                 </div>
 
-                <div class="d-inline p-2">
+                <div class="d-inline-block p-2 border border-dark rounded">
                     <span th:text="${post.getCreated()}"></span>
+                    <span th:text="${post.getUsername()}"></span>
                 </div>
             </div>
         </tr>

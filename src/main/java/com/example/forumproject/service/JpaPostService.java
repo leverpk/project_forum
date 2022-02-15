@@ -31,6 +31,7 @@ public class JpaPostService implements PostService {
         Post post = Post.builder()
                 .content(newPost.getContent())
                 .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+                .username(newPost.getUsername())
                 .build();
         Post savedPost = postRepository.save(post);
         Thread thread = threadRepository.getById(threadId);
