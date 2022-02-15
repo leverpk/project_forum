@@ -11,8 +11,11 @@
 
 
 <form th:action="@{'/category/' + ${categoryId} + '/thread/'+ ${threadId}+'/post'}" method="post">
+    <div class="threadlist m-4">
+        <h2 th:text="${thread.getTitle()}"></h2>
+    </div>
     <textarea name="content" placeholder="Wpisz zawartość..."></textarea><br>
-    <input type="text" name="username" placeholder="Wpisz nick..."><br>
+<!--    <input type="text"name="email" placeholder="Wpisz e-mail..."><br>-->
     <button type="submit">Dodaj post</button>
 </form>
 

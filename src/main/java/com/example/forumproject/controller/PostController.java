@@ -4,6 +4,7 @@ import com.example.forumproject.dto.PostDto;
 import com.example.forumproject.service.CategoryService;
 import com.example.forumproject.service.PostService;
 import com.example.forumproject.service.ThreadService;
+import com.example.forumproject.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,7 @@ public class PostController {
     private final PostService postService;
     private final CategoryService categoryService;
     private final ThreadService threadService;
+    private final UserService  userService;
 
 
     @GetMapping("/category/{id}/thread/{idThread}/post/add")
@@ -26,6 +28,7 @@ public class PostController {
         model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
         model.addAttribute("threadId", idThread);
         model.addAttribute("categoryId", id);
+        model.addAttribute("thread",threadService.getById(idThread));
         return "/post/post-add-form";
     }
 
