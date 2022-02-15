@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
+
 @RequiredArgsConstructor
 @Controller
+
 public class PostController {
 
     private final PostService postService;
@@ -24,7 +27,7 @@ public class PostController {
 
 
     @GetMapping("/category/{id}/thread/{idThread}/post/add")
-    public String postAddForm(Model model, @PathVariable Long id, @PathVariable Long idThread) {
+    public String postAddForm(Model model, @PathVariable Long id, @PathVariable Long idThread)  {
         model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
         model.addAttribute("threadId", idThread);
         model.addAttribute("categoryId", id);
@@ -33,8 +36,8 @@ public class PostController {
     }
 
     @PostMapping("/category/{id}/thread/{idThread}/post")
-    public String postAdd(@ModelAttribute PostDto postDto, Model model, @PathVariable Long id, @PathVariable Long idThread) {
-        postService.addPost(postDto, id, idThread);
+    public String postAdd(@ModelAttribute PostDto postDto, Model model, @PathVariable Long id, @PathVariable Long idThread,Principal principal) {
+        postService.addPost(postDto, id, idThread,principal);
         model.addAttribute("threadId", idThread);
         return "redirect:/category/" + id + "/thread/" + idThread + "/post";
     }

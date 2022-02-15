@@ -7,31 +7,32 @@ import com.example.forumproject.model.Thread;
 import com.example.forumproject.repository.CategoryRepository;
 import com.example.forumproject.repository.PostRepository;
 import com.example.forumproject.repository.ThreadRepository;
+import com.example.forumproject.repository.UserRepository;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class JpaPostService implements PostService {
 
     private final PostRepository postRepository;
     private final ThreadRepository threadRepository;
     private final CategoryRepository categoryRepository;
+    private final UserRepository userRepository;
 
-    public JpaPostService(PostRepository postRepository, ThreadRepository threadRepository, CategoryRepository categoryRepository) {
-        this.postRepository = postRepository;
-        this.threadRepository = threadRepository;
-        this.categoryRepository = categoryRepository;
-    }
 
     @Override
-    public Post addPost(PostDto newPost, Long id, Long threadId) {
+    public Post addPost(PostDto newPost, Long id, Long threadId, Principal principal) {
         Post post = Post.builder()
                 .content(newPost.getContent())
                 .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
-                .username(newPost.getUsername())
+                .user(newPost.getUser().setUsername(principal.getName("")))
                 .build();
         Post savedPost = postRepository.save(post);
         Thread thread = threadRepository.getById(threadId);

@@ -20,6 +20,6 @@ public class Post {
     private User user;
     private String content;
     private String created;
-    private String username;
+
 
 }
