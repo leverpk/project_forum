@@ -1,5 +1,5 @@
 package com.example.forumproject.service;
 
-public interface UserService {
+public interface UserService  {
 
 }
