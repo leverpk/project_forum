@@ -15,20 +15,21 @@
     </thead>
     <tbody>
 
-        <div class="threadlist m-5">
+        <div class="threadlist m-4">
             <h2 th:text="${category.getTitle()}"></h2>
             </div>
+        <br>
 
     <tr th:each="thread:${threads}">
-        <div class="threadlist m-5">
-            <h3><a th:href="@{'/category/' + ${categoryId} + '/thread/' + ${thread.getId()} + '/post'}" th:text="${thread.getTitle()}"></a>
+        <div class="threadlist m-4">
+            <h4><a th:href="@{'/category/' + ${categoryId} + '/thread/' + ${thread.getId()} + '/post'}" th:text="${thread.getTitle()}"></a>
 <!--            lista threadów-->
-        </h3></div>
+        </h4></div>
     </tr>
     </tbody>
 </table>
 <ul>
-
+<br>
         <button type="submit">
         <h4><a th:href="@{'/category/' + ${categoryId} + '/thread/add'}">Dodaj nowy wątek</a></h4></button>
 
