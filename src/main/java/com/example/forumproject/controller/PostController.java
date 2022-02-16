@@ -37,7 +37,7 @@ public class PostController {
 
     @PostMapping("/category/{id}/thread/{idThread}/post")
     public String postAdd(@ModelAttribute PostDto postDto, Model model, @PathVariable Long id, @PathVariable Long idThread,Principal principal) {
-        postService.addPost(postDto, id, idThread,principal);
+        postService.addPost(postDto, id, idThread, principal);
         model.addAttribute("threadId", idThread);
         return "redirect:/category/" + id + "/thread/" + idThread + "/post";
     }
@@ -52,5 +52,6 @@ public class PostController {
         model.addAttribute("threadTitle", threadService.getById(idThread));
         return "/post/list";
     }
+
 
 }

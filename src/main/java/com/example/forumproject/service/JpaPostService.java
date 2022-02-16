@@ -4,12 +4,13 @@ import com.example.forumproject.dto.PostDto;
 import com.example.forumproject.model.Category;
 import com.example.forumproject.model.Post;
 import com.example.forumproject.model.Thread;
+import com.example.forumproject.model.User;
 import com.example.forumproject.repository.CategoryRepository;
 import com.example.forumproject.repository.PostRepository;
 import com.example.forumproject.repository.ThreadRepository;
 import com.example.forumproject.repository.UserRepository;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
@@ -32,7 +33,7 @@ public class JpaPostService implements PostService {
         Post post = Post.builder()
                 .content(newPost.getContent())
                 .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
-                .user(newPost.getUser().setUsername(principal.getName("")))
+                .user((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal())
                 .build();
         Post savedPost = postRepository.save(post);
         Thread thread = threadRepository.getById(threadId);

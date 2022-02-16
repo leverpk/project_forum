@@ -56,12 +56,10 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .build());
         Post postSopot = postRepository.save(Post.builder()
                 .content("Praca w Sopocie")
-                .username("PanNauczyciel")
                 .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .build());
         Post postGdansk = postRepository.save(Post.builder()
                 .content("Praca w Gdańsku")
-                .username("Piopio")
                 .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .build());
         Thread javaOffers = threadRepository.save(Thread.builder()
