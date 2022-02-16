@@ -21,5 +21,8 @@ public class Post {
     private String content;
     private String created;
 
-
+    @Override
+    public String toString() {
+        return content + ", stworzony: " + created;
+    }
 }
