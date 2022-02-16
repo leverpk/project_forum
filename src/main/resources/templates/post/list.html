@@ -15,22 +15,21 @@
         </thead>
         <tbody>
 
-        <div class="threadlist m-4">
-            <h2 th:text="${threadTitle.getTitle()}"></h2>
-        </div>
-
         <tr th:each="post:${posts}">
 
 
             <div class="d-block p-3">
+
                 <div class="d-inline-block p-2 border border-dark rounded" >
                     <span th:text="${post.getContent()}"></span>
                 </div>
 
                 <div class="d-inline-block p-2 border border-dark rounded">
                     <span th:text="${post.getCreated()}"></span>
-                    <span th:text="${post.getUser()}"><</span>
+                    <a th:href="@{'/user/posts'}"><span th:text="${post.getUser()}"><</span></a>
+<!--                    + ${userId}-->
                 </div>
+
             </div>
         </tr>
         </tbody>

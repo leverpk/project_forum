@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="main::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="main::navigation(parentCategories=${parentCategories})"></nav>
+
+<div class="userpostslist m-4">
+<!--    <h2 th:text="${}"></h2>-->
+</div>
+<br>
+
+</body>
+</html>

@@ -43,7 +43,7 @@ public class PostController {
     }
 
     @GetMapping("/category/{id}/thread/{idThread}/post")
-    public String postList(Model model, @PathVariable Long id, @PathVariable Long idThread) {
+    public String postsList(Model model, @PathVariable Long id, @PathVariable Long idThread) {
         model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
         model.addAttribute("threads", threadService.findAllThreadsInSubcategory(id));
         model.addAttribute("categoryId", id);
