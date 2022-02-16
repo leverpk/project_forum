@@ -1,16 +1,13 @@
 package com.example.forumproject.service;
 
 import com.example.forumproject.dto.PostDto;
-import com.example.forumproject.model.Category;
 import com.example.forumproject.model.Post;
 import com.example.forumproject.model.Thread;
-import com.example.forumproject.model.User;
 import com.example.forumproject.repository.CategoryRepository;
 import com.example.forumproject.repository.PostRepository;
 import com.example.forumproject.repository.ThreadRepository;
 import com.example.forumproject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
