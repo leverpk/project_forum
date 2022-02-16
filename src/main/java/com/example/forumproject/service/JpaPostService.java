@@ -38,7 +38,6 @@ public class JpaPostService implements PostService {
         return savedPost;
     }
 
-
     @Override
     public List<Post> findAllPosts() {
         return postRepository.findAll();
@@ -48,4 +47,10 @@ public class JpaPostService implements PostService {
     public List<Post> findAllPostsInThread(Long id) {
         return threadRepository.findById(id).map(Thread::getPostList).orElseThrow();
     }
+
+    @Override
+    public List<Post> findAllPostsByUser(Long id) {
+        return postRepository.findPostsByUser_Id(id);
+    }
+
 }

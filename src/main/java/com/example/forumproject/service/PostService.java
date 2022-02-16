@@ -11,5 +11,6 @@ public interface PostService {
     Post addPost(PostDto newPost, Long id, Long threadId, Principal principal);
     List<Post> findAllPosts();
     List<Post> findAllPostsInThread(Long id);
+    List<Post> findAllPostsByUser(Long id);
 
 }

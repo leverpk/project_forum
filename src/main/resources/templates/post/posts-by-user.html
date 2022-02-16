@@ -10,8 +10,10 @@
 <nav th:replace="main::navigation(parentCategories=${parentCategories})"></nav>
 
 <div class="userpostslist m-4">
-    <h2>Lista postów użytkownika</h2>
-    <h4><a th:href="@{'/category/' + ${categoryId} + '/thread/' + ${thread.getId()} + '/post'}" th:text="${thread.getTitle()}"></a>
+    <h2>Lista postów użytkownika </h2><h2 th:text="${username.getUsername()}"></h2>
+
+
+
 </div>
 <br>
 
