@@ -1,15 +1,26 @@
 package com.example.forumproject.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import com.sun.istack.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.time.LocalDateTime;
-@Data
-@Builder
+import javax.validation.constraints.NotEmpty;
+
+@Getter
+@Setter
 public class UserDto {
 
-    String username;
-    String email;
-    LocalDateTime signUpDate;
+    @NotNull
+    @NotEmpty
+    private String username;
+    @NotNull
+    @NotEmpty
+    private String password;
+    @NotNull
+    @NotEmpty
+    private String matchingPassword;
+    @NotNull
+    @NotEmpty
+    private String email;
 
 }

@@ -15,10 +15,13 @@
     <br>
     <br>
 
-    <div class="d-inline-block p-2 border border-dark rounded" >
-        <span th:text="${user}"></span>
+    <tr th:each="post:${posts}">
+
+    <div class="d-block p-2 border border-dark rounded" >
+        <span th:text="${post}"></span><br>
     </div>
 
+    </tr>
 </div>
 <br>
 

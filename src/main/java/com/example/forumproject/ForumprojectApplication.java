@@ -68,19 +68,18 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .role("ROLE_USER")
                 .enabled(true)
                 .build());
-        Post postSopot = postRepository.save(Post.builder()
-                .content("Praca w Sopocie")
-                .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
-                .user(user1)
-                .build());
-        Post postGdansk = postRepository.save(Post.builder()
-                .content("Praca w Gdańsku")
-                .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
-                .user(user2)
-                .build());
+//        Post postSopot = postRepository.save(Post.builder()
+//                .content("Praca w Sopocie")
+//                .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+//                .user(user1)
+//                .build());
+//        Post postGdansk = postRepository.save(Post.builder()
+//                .content("asdafasfas")
+//                .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+//                .user(user2)
+//                .build());
         Thread javaOffers = threadRepository.save(Thread.builder()
                 .title("Junior Java Developers")
-                .postList(List.of(postSopot, postGdansk))
                 .build());
         Thread csharpOffers = threadRepository.save(Thread.builder()
                 .title("Junior C# Developers")

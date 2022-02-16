@@ -26,7 +26,7 @@ public class UserController {
     @GetMapping("/{idUser}/posts")
     public String userPostsList(Model model, @PathVariable Long idUser){
         model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
-        model.addAttribute("user", postService.findAllPostsByUser(idUser));
+        model.addAttribute("posts", postService.findAllPostsByUser(idUser));
         model.addAttribute("username", userService.findById(idUser));
         return "/post/posts-by-user";
     }
