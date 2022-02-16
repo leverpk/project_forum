@@ -27,17 +27,15 @@ public class JpaPostService implements PostService {
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
 
-
     @Override
     public Post addPost(PostDto newPost, Long id, Long threadId, Principal principal) {
         Post post = Post.builder()
                 .content(newPost.getContent())
                 .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
-                .user((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal())
+                .user(userRepository.findByUsername(principal.getName()))
                 .build();
         Post savedPost = postRepository.save(post);
         Thread thread = threadRepository.getById(threadId);
-        Category category = categoryRepository.getById(id);
         thread.getPostList().add(savedPost);
         postRepository.save(post);
         return savedPost;

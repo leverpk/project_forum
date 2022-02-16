@@ -54,13 +54,29 @@ public class ForumprojectApplication implements CommandLineRunner {
         Category afterWork = categoryRepository.save(Category.builder()
                 .title("Work life balance")
                 .build());
+        final User user1 = userRepository.save(User.builder()
+                .email("admin@sda.pl")
+                .username("admin")
+                .password("1234")
+                .role("ROLE_ADMIN")
+                .enabled(true)
+                .build());
+        final User user2 = userRepository.save(User.builder()
+                .email("user@sda.pl")
+                .username("user")
+                .password("1234")
+                .role("ROLE_USER")
+                .enabled(true)
+                .build());
         Post postSopot = postRepository.save(Post.builder()
                 .content("Praca w Sopocie")
                 .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+                .user(user1)
                 .build());
         Post postGdansk = postRepository.save(Post.builder()
                 .content("Praca w Gdańsku")
                 .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+                .user(user2)
                 .build());
         Thread javaOffers = threadRepository.save(Thread.builder()
                 .title("Junior Java Developers")
@@ -128,20 +144,6 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .title("Relaks z grami")
                 .parentCategoryId(afterWork.getId())
                 .description("polecane gry")
-                .build());
-        final User user1 = userRepository.save(User.builder()
-                .email("admin@sda.pl")
-                .username("admin")
-                .password("1234")
-                .role("ROLE_ADMIN")
-                .enabled(true)
-                .build());
-        final User user2 = userRepository.save(User.builder()
-                .email("user@sda.pl")
-                .username("user")
-                .password("1234")
-                .role("ROLE_USER")
-                .enabled(true)
                 .build());
     }
 }

@@ -23,6 +23,7 @@ public class UserController {
     @GetMapping("/posts")
     public String userPostsList(Model model){
         model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
+
         return "/post/posts-by-user";
     }
 

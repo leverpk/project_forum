@@ -26,7 +26,7 @@
 
                 <div class="d-inline-block p-2 border border-dark rounded">
                     <span th:text="${post.getCreated()}"></span>
-                    <a th:href="@{'/user/posts'}"><span th:text="${post.getUser()}"><</span></a>
+                    <a th:href="@{'/user/posts'}"><span th:text="${post.getUser().getUsername()}"><</span></a>
 <!--                    + ${userId}-->
                 </div>
 
