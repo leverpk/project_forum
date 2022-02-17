@@ -3,11 +3,13 @@ package com.example.forumproject.model;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,6 +19,8 @@ import java.util.Objects;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class User implements UserDetails {
 
     @Id
@@ -29,59 +33,61 @@ public class User implements UserDetails {
     private String password;
     private String email;
     private LocalDateTime signUpDate;
-    private String role;
-    private boolean enabled;
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
+    private boolean locked = false;
+    private boolean enabled = false;
+
+    public User(String username, String password, String email, UserRole role) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
+
+    public User(String username, String password, String email, LocalDateTime signUpDate, UserRole role, Boolean locked, Boolean enabled) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.signUpDate = signUpDate;
+        this.role = role;
+        this.locked = locked;
+        this.enabled = enabled;
+    }
 
     @Override
-    public String getPassword() {
+    public String getPassword(){
         return password;
     }
 
     @Override
-    public String getUsername() {
+    public String getUsername(){
         return username;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(() -> role);
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
+        return Collections.singletonList(authority);
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return enabled;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return enabled;
+        return !locked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return enabled;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
         return enabled;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return username;
     }
 }

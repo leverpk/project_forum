@@ -1,9 +1,7 @@
 package com.example.forumproject;
 
-import com.example.forumproject.model.Category;
-import com.example.forumproject.model.Post;
+import com.example.forumproject.model.*;
 import com.example.forumproject.model.Thread;
-import com.example.forumproject.model.User;
 import com.example.forumproject.repository.CategoryRepository;
 import com.example.forumproject.repository.PostRepository;
 import com.example.forumproject.repository.ThreadRepository;
@@ -11,15 +9,9 @@ import com.example.forumproject.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.security.Timestamp;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @SpringBootApplication
 public class ForumprojectApplication implements CommandLineRunner {
@@ -28,12 +20,14 @@ public class ForumprojectApplication implements CommandLineRunner {
     private final UserRepository userRepository;
     private final ThreadRepository threadRepository;
     private final PostRepository postRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public ForumprojectApplication(CategoryRepository categoryRepository, UserRepository userRepository, ThreadRepository threadRepository, PostRepository postRepository) {
+    public ForumprojectApplication(CategoryRepository categoryRepository, UserRepository userRepository, ThreadRepository threadRepository, PostRepository postRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.categoryRepository = categoryRepository;
         this.userRepository = userRepository;
         this.threadRepository = threadRepository;
         this.postRepository = postRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     public static void main(String[] args) {
@@ -57,15 +51,15 @@ public class ForumprojectApplication implements CommandLineRunner {
         final User user1 = userRepository.save(User.builder()
                 .email("admin@sda.pl")
                 .username("admin")
-                .password("1234")
-                .role("ROLE_ADMIN")
+                .password(bCryptPasswordEncoder.encode("1234"))
+                .role(UserRole.ADMIN)
                 .enabled(true)
                 .build());
         final User user2 = userRepository.save(User.builder()
                 .email("user@sda.pl")
                 .username("user")
-                .password("1234")
-                .role("ROLE_USER")
+                .password(bCryptPasswordEncoder.encode("1234"))
+                .role(UserRole.USER)
                 .enabled(true)
                 .build());
 //        Post postSopot = postRepository.save(Post.builder()
