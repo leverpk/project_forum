@@ -19,11 +19,11 @@ public class JpaCategoryService implements CategoryService {
 
     @Override
     public Category addCategory(CategoryDto newCategory) {
-        final Category category = Category.builder()
+        Category category = Category.builder()
                 .title(newCategory.getTitle())
-                .description(newCategory.getDescription())
                 .build();
-        return categoryRepository.save(category);
+        Category savedCategory = categoryRepository.save(category);
+        return savedCategory;
     }
 
     @Override
