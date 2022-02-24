@@ -12,5 +12,6 @@ public interface PostService {
     List<Post> findAllPosts();
     List<Post> findAllPostsInThread(Long id);
     List<Post> findAllPostsByUser(Long id);
+    List<Post> findAllPostsByWord(String word);
 
 }

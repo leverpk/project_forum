@@ -11,6 +11,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @SpringBootApplication
@@ -62,18 +64,19 @@ public class ForumprojectApplication implements CommandLineRunner {
                 .role(UserRole.USER)
                 .enabled(true)
                 .build());
-//        Post postSopot = postRepository.save(Post.builder()
-//                .content("Praca w Sopocie")
-//                .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
-//                .user(user1)
-//                .build());
-//        Post postGdansk = postRepository.save(Post.builder()
-//                .content("asdafasfas")
-//                .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
-//                .user(user2)
-//                .build());
+        Post postSopot = postRepository.save(Post.builder()
+                .content("Praca w Sopocie")
+                .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+                .user(user1)
+                .build());
+        Post postGdansk = postRepository.save(Post.builder()
+                .content("Praca w Gdańsku")
+                .created(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+                .user(user2)
+                .build());
         Thread javaOffers = threadRepository.save(Thread.builder()
                 .title("Junior Java Developers")
+                .postList(List.of(postGdansk, postSopot))
                 .build());
         Thread csharpOffers = threadRepository.save(Thread.builder()
                 .title("Junior C# Developers")

@@ -53,4 +53,9 @@ public class JpaPostService implements PostService {
         return postRepository.findPostsByUser_Id(id);
     }
 
+    @Override
+    public List<Post> findAllPostsByWord(String word) {
+        return postRepository.findAllByContentContains(word);
+    }
+
 }

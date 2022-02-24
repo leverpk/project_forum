@@ -11,6 +11,7 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<Post, Long> {
 
     List<Post> findPostsByUser_Id(Long id);
+    List<Post> findAllByContentContains(String word);
 
 
 }

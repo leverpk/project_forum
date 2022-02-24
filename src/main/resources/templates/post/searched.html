@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="main::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="main::navigation(parentCategories=${parentCategories})"></nav>
+<table>
+    <thead>
+    <tr>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="post:${searchedPosts}">
+
+        <div class="d-inline-block p-2 border border-dark rounded" >
+            <span th:text="${post.content}"></span>
+        </div>
+
+    </tr>
+    </tbody>
+</table>
+<ul>
+</ul>
+</body>
+</html>

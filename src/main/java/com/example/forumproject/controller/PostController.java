@@ -8,10 +8,7 @@ import com.example.forumproject.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -52,6 +49,15 @@ public class PostController {
         model.addAttribute("threadTitle", threadService.getById(idThread));
         return "/post/list";
     }
+
+    @GetMapping("/category/searched")
+    public String searchedPostList(Model model, @RequestParam(value = "searched", required = false) String searched){
+        model.addAttribute("parentCategories", categoryService.findCategoryByParentId(null));
+        model.addAttribute("searchedPosts", postService.findAllPostsByWord(searched));
+        return "/post/searched";
+    }
+
+    // TODO: Czarek search
 
 
 }
